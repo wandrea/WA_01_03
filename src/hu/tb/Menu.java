@@ -11,22 +11,22 @@ public class Menu {
 	private FileViewer fileViewer;
 
 
-	private Menu(){
+	private Menu() {
 		fileViewer = new FileViewer(new File("d:\\HELIXLAB_TANFOLYAM\\JAVA\\9ora"));
 	}
 
-	public static Menu getInstance(){
-		if(INSTANCE == null){
+	public static Menu getInstance() {
+		if (INSTANCE == null) {
 			INSTANCE = new Menu();
 		}
 		return INSTANCE;
 	}
 
 	/*public Menu() {
-		fileViewer = new FileViewer(new File("C:\\Users\\Admin\\Desktop\\resources"));
+        fileViewer = new FileViewer(new File("C:\\Users\\Admin\\Desktop\\resources"));
 	}*/
 
-	//TODO Console-os menü megvalósítása
+	//Console-os menü megvalósítása
 	public void run() {
 
 		int flag = -1;
@@ -38,48 +38,55 @@ public class Menu {
 			flag = scanner.nextInt();
 
 			switch (flag) {
-			case 1:
-				fileViewer.sortListFilesInDir(SortDirection.DESC);
+				case 1:
+					fileViewer.sortListFilesInDir(SortDirection.DESC);
 
-				break;
-			case 2:
-				fileViewer.printFirstTextFile();
-				break;
-			case 3:
-				fileViewer.printNextFileContent();
-				break;
-			case 4:
-				fileViewer.printPreviousFileContent();
-				break;
-			case 5:
-				//ODO
-				break;
-			case 6:
-				//TODO
-				break;
-			case 7:
-				//TODO
-				break;
-			case 8:
-				//TODO
-				break;
+					break;
+				case 2:
+					fileViewer.printFirstTextFile();
+					break;
+				case 3:
+					fileViewer.printNextFileContent();
+					break;
+				case 4:
+					fileViewer.printPreviousFileContent();
+					break;
+				case 5:
+					System.out.println("Adja meg a kiiratni kívánt file nevét: ");
+					String fileName = scanner.next();
+					fileViewer.printFileNameContent(fileName);
+					break;
+				case 6:
+					fileViewer.newFileAndContent();
+					break;
+				case 7:
+					fileViewer.FileContentModify();
+					break;
+				case 8:
+					fileViewer.fileDelete();
+					break;
+
+				case 9:
+					fileViewer.biggestFileHalf();
+					break;
 			}
-			System.out.println("\n");
-
 		}
+		System.out.println("\n");
+
+
 	}
 
 	//  választható menüpontok
 	//file-ok listázása 1
 	//  - 1. *.txt tartalmának a megnyitása(console-ra írása) 2
-	// TODO - Következő *.txt tartalmának a megnyitása(console-ra írása)
-	// TODO - Előző *.txt tartalmának a megnyitása(console-ra írása)
-	// TODO - Név alapján *.txt tartalmának a megnyitása(console-ra írása)
-	// TODO - file létrehozás név + tartalom
-	// TODO - file tartalom módosítás név alapján
-	// TODO - file törlése
-	// TODO - legnagyobb méretű file megkeresése, tartalmának elfelezése és 2 külön file-ba írása
-	// TODO - Kilépés
+	//  Következő *.txt tartalmának a megnyitása(console-ra írása)
+	// Előző *.txt tartalmának a megnyitása(console-ra írása)
+	// Név alapján *.txt tartalmának a megnyitása(console-ra írása)
+	// file létrehozás név + tartalom
+	// file tartalom módosítás név alapján
+	//  file törlése
+	//  legnagyobb méretű file megkeresése, tartalmának elfelezése és 2 külön file-ba írása
+	//  Kilépés
 
 	private void printMenu() {
 		System.out.println("**********Menu***********");
@@ -87,6 +94,11 @@ public class Menu {
 		System.out.println("** 1 txt file kiírása(2)*");
 		System.out.println("** 2 txt file kiírása(3)*");
 		System.out.println("** előző txt file kiírása(4)*");
+		System.out.println("** nev alapján kiiratás(5)*");
+		System.out.println("**uj file létrehozása(6)*");
+		System.out.println("**tartalom modosítása(7)*");
+		System.out.println("**file törles(8)*");
+		System.out.println("**file felezés(9)*");
 		System.out.println("*******Kilépés (0)******");
 	}
 }
